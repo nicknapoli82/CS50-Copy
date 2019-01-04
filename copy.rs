@@ -144,7 +144,7 @@ fn main() {
     // // determine padding for scanlines                            //
     // int padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4; //
     ///////////////////////////////////////////////////////////////////
-    let padding = ((4 - (copy_bmp.BFInfo.biWidth * mem::size_of::<bmp::RGBTriple> as i32)) % 4 % 4) as i64;
+    let padding = std::num::Wrapping((4 - (copy_bmp.BFInfo.biWidth * mem::size_of::<bmp::RGBTriple> as i32)) % 4 % 4).0 as i64;    
     
     /////////////////////////////////////////////////////////////////////
     // // iterate over infile's scanlines                              //
